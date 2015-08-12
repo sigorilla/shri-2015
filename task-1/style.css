@@ -94,8 +94,6 @@ Not table
   position: fixed;
   font-weight: bold;
   font-size: 1rem;
-  background-color: #fff;
-  border-bottom: 2px solid #6678b1;
   white-space: pre;
   z-index: 9;
 }
@@ -237,7 +235,7 @@ input[type=checkbox]:checked + label {
   background-color: #99bcff;
   z-index: -10;
 }
-.item-header:hover, 
+/*.item-header:hover, */
 .item-flight:hover {
   background-color: #99bcff;
 }
