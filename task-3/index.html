@@ -3,16 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Task 3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div id="loading" class="hidden"><span id="loading"><i class="fa fa-spinner fa-spin"></i></span></div>
+
 <div class="container">
+  <h2>
+    Title: <span id="audioTitle">choose song, please</span>
+  </h2>
+  <div id="dragndrop">
+    <span>Drop file here</span>
+    <input type="file" name="file" id="file" class="hidden">
+  </div>
   
-  <div id="dragndrop"></div>
-  <span id="audioTitle"></span>
-  <button id="play" disabled="">Play</button>
-  <button id="stop" disabled="">Stop</button>
+  <div class="buttons">
+    <button id="play" disabled=""><i class="fa fa-play"></i></button>
+    <button id="stop" disabled=""><i class="fa fa-stop"></i></button>
+  </div>
+  <div class="buttons">
+    <span>0</span>
+    <input type="range" min="0" max="100" id="level">
+    <span>100</span>
+  </div>
+  
+  <canvas id="analyser"></canvas>
+
+
 </div>
 
 <script src="audio.js"></script>
