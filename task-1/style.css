@@ -86,25 +86,15 @@ Addition Classes
 /*
 Not table
  */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #fff;
-  z-index: 2;
-  /*overflow: hidden;*/
-}
 .list-flight {
   position: relative;
-  margin-top: 40px;
+  margin-top: 36px;
 }
-header .item-cell,
 .item-cell.item-header {
   font-weight: bold;
+  background-color: #fff;
   border-bottom: 2px solid #6678b1;
 }
-header,
 .item-flight > a {
   font-size: 0;
 }
@@ -117,7 +107,6 @@ header,
   font-size: 1rem;
   position: fixed;
   white-space: pre;
-  /*background-color: rgba(255, 0, 0, .4);*/
   z-index: 9;
 }
 
@@ -255,12 +244,25 @@ hide logo - 4
     visibility: hidden;
   }
 
-  .item-cell.item-flight-type {
-    width: 10%;
-  }
-  .item-cell.item-flight-time {
-    width: 10%;
-  }
+  .item-cell.item-flight-type { width: 10%; } 
+  .item-cell.item-header.item-flight-type { left: 0; }
+  .item-cell.item-flight-number { width: 10%; }
+  .item-cell.item-header.item-flight-number { left: 10%; }
+  .item-cell.item-flight-company { width: 10%; }
+  .item-cell.item-header.item-flight-company { left: 20%; }
+  /*.item-cell.item-flight-company-logo { width: 10%; }*/
+  /*.item-cell.item-header.item-flight-company-logo { left: 25%; }*/
+  .item-cell.item-flight-airbus { width: 15%; }
+  .item-cell.item-header.item-flight-airbus { left: 30%; }
+  .item-cell.item-flight-destination { width: 20%; }
+  .item-cell.item-header.item-flight-destination { left: 45%; }
+  .item-cell.item-flight-time { width: 10%; }
+  .item-cell.item-header.item-flight-time { left: 65%; }
+  .item-cell.item-flight-status { width: 10%; }
+  .item-cell.item-header.item-flight-status { left: 75%; }
+  .item-cell.item-flight-info { width: 15%; }
+  .item-cell.item-header.item-flight-info { left: 85%; }
+
 }
 
 /*
@@ -271,12 +273,26 @@ hide company - 3
     display: none;
     visibility: hidden;
   }
-  .item-cell.item-flight-status {
-    width: 15%;
-  }
-  .item-cell.item-flight-info {
-    width: 20%;
-  }
+
+  .item-cell.item-flight-type { width: 10%; } 
+  .item-cell.item-header.item-flight-type { left: 0; }
+  .item-cell.item-flight-number { width: 10%; }
+  .item-cell.item-header.item-flight-number { left: 10%; }
+  /*.item-cell.item-flight-company { width: 10%; }*/
+  /*.item-cell.item-header.item-flight-company { left: 20%; }*/
+  /*.item-cell.item-flight-company-logo { width: 10%; }*/
+  /*.item-cell.item-header.item-flight-company-logo { left: 25%; }*/
+  .item-cell.item-flight-airbus { width: 15%; }
+  .item-cell.item-header.item-flight-airbus { left: 20%; }
+  .item-cell.item-flight-destination { width: 20%; }
+  .item-cell.item-header.item-flight-destination { left: 35%; }
+  .item-cell.item-flight-time { width: 10%; }
+  .item-cell.item-header.item-flight-time { left: 55%; }
+  .item-cell.item-flight-status { width: 15%; }
+  .item-cell.item-header.item-flight-status { left: 65%; }
+  .item-cell.item-flight-info { width: 20%; }
+  .item-cell.item-header.item-flight-info { left: 80%; }
+
 }
 
 /*
@@ -299,18 +315,26 @@ hide information - 9
     display: none;
     visibility: hidden;
   }
-  .item-cell.item-flight-type {
-    width: 15%;
-  }
-  .item-cell.item-flight-number {
-    width: 15%;
-  }
-  .item-cell.item-flight-destination {
-    width: 25%;
-  }
-  .item-cell.item-flight-time {
-    width: 15%;
-  }
+
+  .item-cell.item-flight-type { width: 15%; } 
+  .item-cell.item-header.item-flight-type { left: 0; }
+  .item-cell.item-flight-number { width: 15%; }
+  .item-cell.item-header.item-flight-number { left: 15%; }
+  /*.item-cell.item-flight-company { width: 10%; }*/
+  /*.item-cell.item-header.item-flight-company { left: 20%; }*/
+  /*.item-cell.item-flight-company-logo { width: 10%; }*/
+  /*.item-cell.item-header.item-flight-company-logo { left: 25%; }*/
+  .item-cell.item-flight-airbus { width: 15%; }
+  .item-cell.item-header.item-flight-airbus { left: 30%; }
+  .item-cell.item-flight-destination { width: 25%; }
+  .item-cell.item-header.item-flight-destination { left: 45%; }
+  .item-cell.item-flight-time { width: 15%; }
+  .item-cell.item-header.item-flight-time { left: 70%; }
+  .item-cell.item-flight-status { width: 15%; }
+  .item-cell.item-header.item-flight-status { left: 85%; }
+  /*.item-cell.item-flight-info { width: 20%; }*/
+  /*.item-cell.item-header.item-flight-info { left: 80%; }*/
+
 }
 
 /*
@@ -321,12 +345,26 @@ hide airbus - 5
     display: none;
     visibility: hidden;
   }
-  .item-cell.item-flight-destination {
-    width: 30%;
-  }
-  .item-cell.item-flight-status {
-    width: 25%;
-  }
+
+  .item-cell.item-flight-type { width: 15%; } 
+  .item-cell.item-header.item-flight-type { left: 0; }
+  .item-cell.item-flight-number { width: 15%; }
+  .item-cell.item-header.item-flight-number { left: 15%; }
+  /*.item-cell.item-flight-company { width: 10%; }*/
+  /*.item-cell.item-header.item-flight-company { left: 20%; }*/
+  /*.item-cell.item-flight-company-logo { width: 10%; }*/
+  /*.item-cell.item-header.item-flight-company-logo { left: 25%; }*/
+  /*.item-cell.item-flight-airbus { width: 15%; }*/
+  /*.item-cell.item-header.item-flight-airbus { left: 30%; }*/
+  .item-cell.item-flight-destination { width: 30%; }
+  .item-cell.item-header.item-flight-destination { left: 30%; }
+  .item-cell.item-flight-time { width: 15%; }
+  .item-cell.item-header.item-flight-time { left: 60%; }
+  .item-cell.item-flight-status { width: 25%; }
+  .item-cell.item-header.item-flight-status { left: 75%; }
+  /*.item-cell.item-flight-info { width: 20%; }*/
+  /*.item-cell.item-header.item-flight-info { left: 80%; }*/
+
 }
 
 /*
@@ -337,13 +375,24 @@ hide airbus - 5
     display: none;
     visibility: hidden;
   }
-  .item-cell.item-flight-number {
-    width: 25%;
-  }
-  .item-cell.item-flight-time {
-    width: 20%;
-  }
-  .item-cell.item-flight-status {
-    width: 40%;
-  }
+
+  .item-cell.item-flight-type { width: 15%; } 
+  .item-cell.item-header.item-flight-type { left: 0; }
+  .item-cell.item-flight-number { width: 25%; }
+  .item-cell.item-header.item-flight-number { left: 15%; }
+  /*.item-cell.item-flight-company { width: 10%; }*/
+  /*.item-cell.item-header.item-flight-company { left: 20%; }*/
+  /*.item-cell.item-flight-company-logo { width: 10%; }*/
+  /*.item-cell.item-header.item-flight-company-logo { left: 25%; }*/
+  /*.item-cell.item-flight-airbus { width: 15%; }*/
+  /*.item-cell.item-header.item-flight-airbus { left: 30%; }*/
+  /*.item-cell.item-flight-destination { width: 30%; }*/
+  /*.item-cell.item-header.item-flight-destination { left: 30%; }*/
+  .item-cell.item-flight-time { width: 20%; }
+  .item-cell.item-header.item-flight-time { left: 40%; }
+  .item-cell.item-flight-status { width: 40%; }
+  .item-cell.item-header.item-flight-status { left: 60%; }
+  /*.item-cell.item-flight-info { width: 20%; }*/
+  /*.item-cell.item-header.item-flight-info { left: 80%; }*/
+
 }
