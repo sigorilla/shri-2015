@@ -91,9 +91,13 @@ Not table
   margin-top: 36px;
 }
 .item-cell.item-header {
+  position: fixed;
   font-weight: bold;
+  font-size: 1rem;
   background-color: #fff;
   border-bottom: 2px solid #6678b1;
+  white-space: pre;
+  z-index: 9;
 }
 .item-flight > a {
   font-size: 0;
@@ -103,11 +107,16 @@ Not table
   font-size: 1rem;
 }
 
-.item-cell.item-header {
-  font-size: 1rem;
+.item-cell.item-header-first:before {
+  content: "";
   position: fixed;
-  white-space: pre;
-  z-index: 9;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 34px;
+  background-color: #fff;
+  border-bottom: 2px solid #6678b1;
+  z-index: 8;
 }
 
 .item-flight a {
@@ -134,8 +143,8 @@ Not table
 .item-cell.item-header.item-flight-company { left: 15%; }
 .item-cell.item-flight-company-logo { width: 10%; }
 .item-cell.item-header.item-flight-company-logo { left: 25%; }
-.item-cell.item-flight-airbus { width: 15%; }
-.item-cell.item-header.item-flight-airbus { left: 35%; }
+.item-cell.item-flight-plane { width: 15%; }
+.item-cell.item-header.item-flight-plane { left: 35%; }
 .item-cell.item-flight-destination { width: 20%; }
 .item-cell.item-header.item-flight-destination { left: 50%; }
 .item-cell.item-flight-time { width: 5%; }
@@ -145,7 +154,7 @@ Not table
 .item-cell.item-flight-info { width: 15%; }
 .item-cell.item-header.item-flight-info { left: 85%; }
 
-.item-cell .airbus-short { 
+.item-cell .plane-short { 
   display: none; 
 }
 .item-cell:after,
@@ -169,8 +178,11 @@ input[type=checkbox] + label {
   top: 0;
   z-index: 10;
 }
+input[type=checkbox] + label:first-of-type {
+  left: 10px;
+}
 input[type=checkbox] + label:last-of-type {
-  left: 30px;
+  left: 35px;
 }
 input[type=checkbox]:checked + label {
   color: #f60;
@@ -209,7 +221,7 @@ input[type=checkbox]:checked + label {
 .item-header.item-flight-number:hover ~ .list-flight .item-cell.item-flight-number:after,
 .item-header.item-flight-company:hover ~ .list-flight .item-cell.item-flight-company:after,
 .item-header.item-flight-company-logo:hover ~ .list-flight .item-cell.item-flight-company-logo:after,
-.item-header.item-flight-airbus:hover ~ .list-flight .item-cell.item-flight-airbus:after,
+.item-header.item-flight-plane:hover ~ .list-flight .item-cell.item-flight-plane:after,
 .item-header.item-flight-destination:hover ~ .list-flight .item-cell.item-flight-destination:after,
 .item-header.item-flight-time:hover ~ .list-flight .item-cell.item-flight-time:after,
 .item-header.item-flight-status:hover ~ .list-flight .item-cell.item-flight-status:after,
@@ -252,8 +264,8 @@ hide logo - 4
   .item-cell.item-header.item-flight-company { left: 20%; }
   /*.item-cell.item-flight-company-logo { width: 10%; }*/
   /*.item-cell.item-header.item-flight-company-logo { left: 25%; }*/
-  .item-cell.item-flight-airbus { width: 15%; }
-  .item-cell.item-header.item-flight-airbus { left: 30%; }
+  .item-cell.item-flight-plane { width: 15%; }
+  .item-cell.item-header.item-flight-plane { left: 30%; }
   .item-cell.item-flight-destination { width: 20%; }
   .item-cell.item-header.item-flight-destination { left: 45%; }
   .item-cell.item-flight-time { width: 10%; }
@@ -282,8 +294,8 @@ hide company - 3
   /*.item-cell.item-header.item-flight-company { left: 20%; }*/
   /*.item-cell.item-flight-company-logo { width: 10%; }*/
   /*.item-cell.item-header.item-flight-company-logo { left: 25%; }*/
-  .item-cell.item-flight-airbus { width: 15%; }
-  .item-cell.item-header.item-flight-airbus { left: 20%; }
+  .item-cell.item-flight-plane { width: 15%; }
+  .item-cell.item-header.item-flight-plane { left: 20%; }
   .item-cell.item-flight-destination { width: 20%; }
   .item-cell.item-header.item-flight-destination { left: 35%; }
   .item-cell.item-flight-time { width: 10%; }
@@ -296,13 +308,13 @@ hide company - 3
 }
 
 /*
-change type of airbus
+change type of plane
  */
 @media screen and (max-width: 800px) {
-  .item-flight-airbus span.airbus-long {
+  .item-flight-plane span.plane-long {
     display: none;
   }
-  .item-flight-airbus span.airbus-short {
+  .item-flight-plane span.plane-short {
     display: inline-block;
   }
 }
@@ -324,8 +336,8 @@ hide information - 9
   /*.item-cell.item-header.item-flight-company { left: 20%; }*/
   /*.item-cell.item-flight-company-logo { width: 10%; }*/
   /*.item-cell.item-header.item-flight-company-logo { left: 25%; }*/
-  .item-cell.item-flight-airbus { width: 15%; }
-  .item-cell.item-header.item-flight-airbus { left: 30%; }
+  .item-cell.item-flight-plane { width: 15%; }
+  .item-cell.item-header.item-flight-plane { left: 30%; }
   .item-cell.item-flight-destination { width: 25%; }
   .item-cell.item-header.item-flight-destination { left: 45%; }
   .item-cell.item-flight-time { width: 15%; }
@@ -338,10 +350,10 @@ hide information - 9
 }
 
 /*
-hide airbus - 5
+hide plane - 5
  */
 @media screen and (max-width: 600px) {
-  .item-flight-airbus {
+  .item-flight-plane {
     display: none;
     visibility: hidden;
   }
@@ -354,8 +366,8 @@ hide airbus - 5
   /*.item-cell.item-header.item-flight-company { left: 20%; }*/
   /*.item-cell.item-flight-company-logo { width: 10%; }*/
   /*.item-cell.item-header.item-flight-company-logo { left: 25%; }*/
-  /*.item-cell.item-flight-airbus { width: 15%; }*/
-  /*.item-cell.item-header.item-flight-airbus { left: 30%; }*/
+  /*.item-cell.item-flight-plane { width: 15%; }*/
+  /*.item-cell.item-header.item-flight-plane { left: 30%; }*/
   .item-cell.item-flight-destination { width: 30%; }
   .item-cell.item-header.item-flight-destination { left: 30%; }
   .item-cell.item-flight-time { width: 15%; }
@@ -368,7 +380,7 @@ hide airbus - 5
 }
 
 /*
-hide airbus - 5
+hide plane - 5
  */
 @media screen and (max-width: 400px) {
   .item-flight-destination {
@@ -384,8 +396,8 @@ hide airbus - 5
   /*.item-cell.item-header.item-flight-company { left: 20%; }*/
   /*.item-cell.item-flight-company-logo { width: 10%; }*/
   /*.item-cell.item-header.item-flight-company-logo { left: 25%; }*/
-  /*.item-cell.item-flight-airbus { width: 15%; }*/
-  /*.item-cell.item-header.item-flight-airbus { left: 30%; }*/
+  /*.item-cell.item-flight-plane { width: 15%; }*/
+  /*.item-cell.item-header.item-flight-plane { left: 30%; }*/
   /*.item-cell.item-flight-destination { width: 30%; }*/
   /*.item-cell.item-header.item-flight-destination { left: 30%; }*/
   .item-cell.item-flight-time { width: 20%; }
