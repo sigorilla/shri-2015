@@ -8,6 +8,7 @@ var Pleer = (function () {
   gainNode,
   currSource,
   playBtn,
+  pauseBtn,
   stopBtn,
   fileInput,
   dropZone,
@@ -19,9 +20,11 @@ var Pleer = (function () {
   var WIDTH = 700,
       HEIGHT = 200;
 
+  var startTime = 0,
+  startOffset = 0;
+
   var _init = function () {
-    // try {
-      // Fix up for prefixing
+    try {
       window.AudioContext = window.AudioContext || window.webkitAudioContext;
       context = new AudioContext();
       analyser = context.createAnalyser();
@@ -37,6 +40,7 @@ var Pleer = (function () {
       audioBuffer = null;
       loadingFlag = true;
       playBtn = document.getElementById('play');
+      pauseBtn = document.getElementById('pause');
       stopBtn = document.getElementById('stop');
       level = document.getElementById('level');
       fileInput = document.getElementById('file');
@@ -45,13 +49,15 @@ var Pleer = (function () {
 
       _addListener();
 
-    // } catch (e) {
-    //   alert('Web Audio API is not supported in this browser');
-    // }
+    } catch (e) {
+      console.log(e);
+      alert('Web Audio API is not supported in this browser');
+    }
   };
 
   var _addListener = function () {
     playBtn.addEventListener('click', _playAudio);
+    pauseBtn.addEventListener('click', _pauseAudio);
     stopBtn.addEventListener('click', _stopAudio);
     dropZone.addEventListener('click', _openFileInput);
     fileInput.addEventListener('change', _handleFileInputSelect, false);
@@ -92,7 +98,8 @@ var Pleer = (function () {
       context.decodeAudioData(event.target.result, function (buffer) {
         audioBuffer = buffer;
         playBtn.disabled = false;
-        stopBtn.disabled = false;
+        // pauseBtn.disabled = false;
+        // stopBtn.disabled = false;
         loadingFlag = true;
         document.getElementById('audioTitle').innerHTML = file.name;
         loading.classList.add('hidden');
@@ -111,6 +118,7 @@ var Pleer = (function () {
   };
 
   var _playAudio = function () {
+    startTime = context.currentTime;
     if (!context.createGain) {
       context.createGain = context.createGainNode;
     }
@@ -126,19 +134,27 @@ var Pleer = (function () {
     if (!source.start) {
       source.start = source.noteOn;
     }
-    source.start(0);
+    source.start(0, startOffset % audioBuffer.duration);
     currSource = source;
     playBtn.disabled = true;
+    pauseBtn.disabled = false;
+    stopBtn.disabled = false;
     dropZone.classList.add('hidden');
     _drawBars();
   };
 
-  var _stopAudio = function () {
-    if (!currSource.stop) {
-      currSource.stop = source.noteOff;
-    }
-    currSource.stop(0);
+  var _pauseAudio = function () {
+    currSource.stop();
+    startOffset += context.currentTime - startTime;
     playBtn.disabled = false;
+    dropZone.classList.remove('hidden');
+  };
+
+  var _stopAudio = function () {
+    currSource.stop(0);
+    startOffset = 0;
+    playBtn.disabled = false;
+    pauseBtn.disabled = true;
     dropZone.classList.remove('hidden');
   };
 

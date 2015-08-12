@@ -54,6 +54,19 @@ body {
 
 #level {
   width: 50%;
+  -webkit-appearance: none;
+  background-color: #ddd;
+  height: 20px; 
+  border-radius: 15px; 
+  padding: 0 3px;
+}
+#level::-webkit-slider-thumb {
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background-color: #444;
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
 }
 
 .buttons {
