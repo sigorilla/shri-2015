@@ -16,6 +16,14 @@ table {
   border-spacing: 0;
   border-collapse: collapse;
 }
+a,
+a:active,
+a:link,
+a:focus,
+a:hover {
+  color: #000;
+  text-decoration: none;
+}
 
 /*
 Addition Classes
@@ -24,16 +32,22 @@ Addition Classes
   margin: 0 auto;
   width: 100%;
   /*max-width: 1200px;*/
+  overflow: hidden;
+  font-size: 0;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 .block {
-  display: block;
+  display: block !important;
+}
+.addition {
+  background-color: #fff;
+  padding: 10px 40px;
 }
 
 .modal {
-  /*display: none;*/
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -42,8 +56,10 @@ Addition Classes
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 10;
   cursor: auto;
+  font-size: 1rem;
 }
-.modal .modal-background {
+.modal .modal-background, 
+.modal .modal-background a {
   position: absolute;
   top: 0;
   left: 0;
@@ -68,31 +84,83 @@ Addition Classes
 }
 
 /*
-Timetable
+Not table
  */
-table#timeTable {
-  width: 100%;
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 2;
+  /*overflow: hidden;*/
+}
+.list-flight {
   position: relative;
-  overflow: hidden;
+  margin-top: 40px;
 }
-table#timeTable tr > * {
-  padding: 10px;
-  /*border: 1px solid #aaa;*/
+header .item-cell,
+.item-cell.item-header {
+  font-weight: bold;
+  border-bottom: 2px solid #6678b1;
 }
-table#timeTable thead th,
-table#timeTable tbody td,
-table#timeTable tbody tr {
+header,
+.item-flight > a {
+  font-size: 0;
+}
+.item-flight, .item-cell {
   position: relative;
+  font-size: 1rem;
 }
-table#timeTable tbody tr {
-  cursor: pointer;
+
+.item-cell.item-header {
+  font-size: 1rem;
+  position: fixed;
+  white-space: pre;
+  /*background-color: rgba(255, 0, 0, .4);*/
+  z-index: 9;
 }
-table#timeTable th {
-  border-bottom: 2px solid #000;
-  text-align: left;
+
+.item-flight a {
+  display: block;
 }
-table#timeTable th:after, 
-table#timeTable td:after {
+.item-cell {
+  position: relative;
+  display: inline-block;
+}
+.item-cell span {
+  display: inline-block;
+  padding: 5px 10px;
+  white-space: pre;
+}
+.item-cell.item-flight-company-logo img {
+  max-height: 25px;
+}
+
+.item-cell.item-flight-type { width: 5%; }
+.item-cell.item-header.item-flight-type { left: 0; }
+.item-cell.item-flight-number { width: 10%; }
+.item-cell.item-header.item-flight-number { left: 5%; }
+.item-cell.item-flight-company { width: 10%; }
+.item-cell.item-header.item-flight-company { left: 15%; }
+.item-cell.item-flight-company-logo { width: 10%; }
+.item-cell.item-header.item-flight-company-logo { left: 25%; }
+.item-cell.item-flight-airbus { width: 15%; }
+.item-cell.item-header.item-flight-airbus { left: 35%; }
+.item-cell.item-flight-destination { width: 20%; }
+.item-cell.item-header.item-flight-destination { left: 50%; }
+.item-cell.item-flight-time { width: 5%; }
+.item-cell.item-header.item-flight-time { left: 70%; }
+.item-cell.item-flight-status { width: 10%; }
+.item-cell.item-header.item-flight-status { left: 75%; }
+.item-cell.item-flight-info { width: 15%; }
+.item-cell.item-header.item-flight-info { left: 85%; }
+
+.item-cell .airbus-short { 
+  display: none; 
+}
+.item-cell:after,
+.item-flight a:after {
   content: "";
   position: absolute;
   display: block;
@@ -100,13 +168,64 @@ table#timeTable td:after {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -2;
+  z-index: -20;
 }
-table#timeTable tbody tr:nth-child(odd) td:not(:hover):after {
-  background-color: #ddd;
+input[type=checkbox] {
+  display: none;
 }
-table#timeTable tr th:hover:after, 
-table#timeTable tr td:hover:after {
+input[type=checkbox] + label {
+  cursor: pointer;
+  font-size: 1.5rem;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+input[type=checkbox] + label:last-of-type {
+  left: 30px;
+}
+input[type=checkbox]:checked + label {
+  color: #f60;
+}
+#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ .list-flight .item-flight-out {
+  display: none;
+}
+#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ .list-flight .item-flight-in {
+  display: none;
+}
+
+.list-flight .item-flight:nth-child(odd) .item-cell:not(:hover):after,
+.list-flight .item-flight:nth-child(odd) > a:after {
+  background-color: #ccddff;
+}
+/* .-in <=> article */
+#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ .list-flight .item-flight-in:nth-of-type(odd) .item-cell:not(:hover):after,
+#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ .list-flight .item-flight-in:nth-of-type(odd) > a:after {
+  background-color: #ccddff;
+}
+#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ .list-flight .item-flight-in:nth-of-type(even) .item-cell:not(:hover):after,
+#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ .list-flight .item-flight-in:nth-of-type(even) > a:after {
+  background-color: inherit;
+}
+/* .-out <=> div */
+#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ .list-flight .item-flight.item-flight-out:nth-of-type(odd) .item-cell:not(:hover):after,
+#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ .list-flight .item-flight.item-flight-out:nth-of-type(odd) > a:after {
+  background-color: #ccddff;
+}
+#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ .list-flight .item-flight.item-flight-out:nth-of-type(even) .item-cell:not(:hover):after,
+#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ .list-flight .item-flight.item-flight-out:nth-of-type(even) > a:after {
+  background-color: inherit;
+}
+
+.item-header.item-flight-type:hover ~ .list-flight .item-cell.item-flight-type:after,
+.item-header.item-flight-number:hover ~ .list-flight .item-cell.item-flight-number:after,
+.item-header.item-flight-company:hover ~ .list-flight .item-cell.item-flight-company:after,
+.item-header.item-flight-company-logo:hover ~ .list-flight .item-cell.item-flight-company-logo:after,
+.item-header.item-flight-airbus:hover ~ .list-flight .item-cell.item-flight-airbus:after,
+.item-header.item-flight-destination:hover ~ .list-flight .item-cell.item-flight-destination:after,
+.item-header.item-flight-time:hover ~ .list-flight .item-cell.item-flight-time:after,
+.item-header.item-flight-status:hover ~ .list-flight .item-cell.item-flight-status:after,
+.item-header.item-flight-info:hover ~ .list-flight .item-cell.item-flight-info:after,
+.list-flight .item-cell:hover:after {
   content: "";
   position: absolute;
   display: block;
@@ -114,42 +233,33 @@ table#timeTable tr td:hover:after {
   left: 0;
   width: 100%;
   height: 50000px;
-  background-color: #ffc;
-  z-index: -1;
+  background-color: #99bcff;
+  z-index: -10;
 }
-table#timeTable tbody tr:hover {
-  background-color: #ffc;
+.item-header:hover, 
+.item-flight:hover {
+  background-color: #99bcff;
 }
-table#timeTable span.airbus-short {
-  display: none;
-}
-table#timeTable div.item-flight-more {
-  display: none;
-}
-#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ #timeTable .item-flight-out {
-  display: none;
-}
-#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ #timeTable .item-flight-in {
-  display: none;
+.list-flight .modal:target {
+  display: block;
 }
 
-/*
-slideup block for more information
- */
-table#timeTable th:nth-child(10), 
-table#timeTable td:nth-child(10) {
-  padding: 0;
-}
 
 
 /*
 hide logo - 4
  */
 @media screen and (max-width: 1000px) {
-  table#timeTable th:nth-child(4), 
-  table#timeTable td:nth-child(4) {
+  .item-flight-company-logo {
     display: none;
     visibility: hidden;
+  }
+
+  .item-cell.item-flight-type {
+    width: 10%;
+  }
+  .item-cell.item-flight-time {
+    width: 10%;
   }
 }
 
@@ -157,10 +267,15 @@ hide logo - 4
 hide company - 3
  */
 @media screen and (max-width: 900px) {
-  table#timeTable th:nth-child(3), 
-  table#timeTable td:nth-child(3) {
+  .item-flight-company {
     display: none;
     visibility: hidden;
+  }
+  .item-cell.item-flight-status {
+    width: 15%;
+  }
+  .item-cell.item-flight-info {
+    width: 20%;
   }
 }
 
@@ -168,10 +283,10 @@ hide company - 3
 change type of airbus
  */
 @media screen and (max-width: 800px) {
-  table#timeTable span.airbus-long {
+  .item-flight-airbus span.airbus-long {
     display: none;
   }
-  table#timeTable span.airbus-short {
+  .item-flight-airbus span.airbus-short {
     display: inline-block;
   }
 }
@@ -180,9 +295,55 @@ change type of airbus
 hide information - 9
  */
 @media screen and (max-width: 700px) {
-  table#timeTable th:nth-child(9), 
-  table#timeTable td:nth-child(9) {
+  .item-flight-info {
     display: none;
     visibility: hidden;
+  }
+  .item-cell.item-flight-type {
+    width: 15%;
+  }
+  .item-cell.item-flight-number {
+    width: 15%;
+  }
+  .item-cell.item-flight-destination {
+    width: 25%;
+  }
+  .item-cell.item-flight-time {
+    width: 15%;
+  }
+}
+
+/*
+hide airbus - 5
+ */
+@media screen and (max-width: 600px) {
+  .item-flight-airbus {
+    display: none;
+    visibility: hidden;
+  }
+  .item-cell.item-flight-destination {
+    width: 30%;
+  }
+  .item-cell.item-flight-status {
+    width: 25%;
+  }
+}
+
+/*
+hide airbus - 5
+ */
+@media screen and (max-width: 400px) {
+  .item-flight-destination {
+    display: none;
+    visibility: hidden;
+  }
+  .item-cell.item-flight-number {
+    width: 25%;
+  }
+  .item-cell.item-flight-time {
+    width: 20%;
+  }
+  .item-cell.item-flight-status {
+    width: 40%;
   }
 }

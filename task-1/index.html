@@ -3,213 +3,628 @@
 <head>
   <meta charset="UTF-8">
   <title>Task 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="modal">
-  <div class="modal-wrapper">
-    <div class="modal-content"></div>
+<div class="container">
+
+  <header class=hidden>
+    <div class="item-cell item-flight-type"><span> </span></div>
+    <div class="item-cell item-flight-number"><span>№</span></div>
+    <div class="item-cell item-flight-company"><span>Company</span></div>
+    <div class="item-cell item-flight-company-logo"><span>Logo</span></div>
+    <div class="item-cell item-flight-airbus"><span>Plane</span></div>
+    <div class="item-cell item-flight-destination"><span>Destination</span></div>
+    <div class="item-cell item-flight-time"><span>Time</span></div>
+    <div class="item-cell item-flight-status"><span>Status</span></div>
+    <div class="item-cell item-flight-info"><span>Information</span></div>
+  </header>
+
+  <div class="item-cell item-header item-flight-type"><span> </span></div>
+  <div class="item-cell item-header item-flight-number"><span>№</span></div>
+  <div class="item-cell item-header item-flight-company"><span>Company</span></div>
+  <div class="item-cell item-header item-flight-company-logo"><span>Logo</span></div>
+  <div class="item-cell item-header item-flight-airbus"><span>Plane</span></div>
+  <div class="item-cell item-header item-flight-destination"><span>Destination</span></div>
+  <div class="item-cell item-header item-flight-time"><span>Time</span></div>
+  <div class="item-cell item-header item-flight-status"><span>Status</span></div>
+  <div class="item-cell item-header item-flight-info"><span>Information</span></div>
+
+  <input type="checkbox" id="checkboxIn"> <label for="checkboxIn"><i class="fa fa-sign-in"></i></label>
+  <input type="checkbox" id="checkboxOut"> <label for="checkboxOut"><i class="fa fa-sign-out"></i></label>
+
+  <div class="list-flight">
+    <div class="item-flight item-flight-out">
+      <a href="#flight1">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span><img src="img/S7_Airlines_Green_Logo.svg.png" alt=""></span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight1">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <article class="item-flight item-flight-in">
+      <a href="#flight2">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-in"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight2">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="item-flight item-flight-in">
+      <a href="#flight4">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-in"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight4">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-flight item-flight-out">
+      <a href="#flight3">
+        <div class="item-cell item-flight-type"><span><i class="fa fa-sign-out"></i></span></div>
+        <div class="item-cell item-flight-number"><span>S7 149</span></div>
+        <div class="item-cell item-flight-company"><span>Sibery</span></div>
+        <div class="item-cell item-flight-company-logo"><span>logo</span></div>
+        <div class="item-cell item-flight-airbus">
+          <span class="airbus-long">Airbus A319</span>
+          <span class="airbus-short">A319</span>
+        </div>
+        <div class="item-cell item-flight-destination"><span>Kiev (Borispol)</span></div>
+        <div class="item-cell item-flight-time"><span>18:13</span></div>
+        <div class="item-cell item-flight-status"><span>Registration</span></div>
+        <div class="item-cell item-flight-info"><span> </span></div>
+      </a>
+      <div class="modal item-flight-more" id="flight3">
+        <div class="modal-background"><a href="#allTable"></a></div>
+        <div class="modal-wrapper">
+          <span class="modal-close"><a href="#allTable"><i class="fa fa-close"></i></a></span>
+          <div class="modal-content">
+            <div>
+              <h2>Moscow -> Kiev</h2>
+              <p>Flight: <strong>S7 149</strong></p>
+              <p>Company: <strong>Sibery</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="addition">
+    <h2>Addition Information</h2>
+    <p><i class="fa fa-sign-in"></i> - in</p>
+    <p><i class="fa fa-sign-out"></i> - out</p>
   </div>
 </div>
-
-<div class="container">
-  <input type="checkbox" id="checkboxIn"> <label for="checkboxIn">in</label>
-  <input type="checkbox" id="checkboxOut"> <label for="checkboxOut">out</label>
-  <table id="timeTable">
-    <colgroup></colgroup>
-    <colgroup></colgroup>
-    <colgroup></colgroup>
-    <colgroup></colgroup>
-    <colgroup></colgroup>
-    <colgroup></colgroup>
-    <colgroup></colgroup>
-    <colgroup></colgroup>
-    <colgroup></colgroup>
-    <thead>
-      <tr>
-        <th>type</th>
-        <th>№</th>
-        <th>company</th>
-        <th>logo</th>
-        <th>type of airbus</th>
-        <th>departure</th>
-        <th>time</th>
-        <th>status</th>
-        <th>info</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="item-flight item-flight-out" id="item-flight-1">
-        <td>out</td>
-        <td>S7 149</td>
-        <td>Sibery</td>
-        <td>logo</td>
-        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
-        <td>Kiev (Borispol)</td>
-        <td>18:13</td>
-        <td>Registration</td>
-        <td></td>
-        <td>
-          <div class="item-flight-more">
-            <h2>Moscow -> Kiev</h2>
-            <p>Flight: <strong>S7 149</strong></p>
-            <p>Company: <strong>Sibery</strong></p>
-          </div>
-        </td>
-      </tr>
-      <tr class="item-flight item-flight-out" id="item-flight-2">
-        <td>out</td>
-        <td>S7 149</td>
-        <td>Sibery</td>
-        <td>logo</td>
-        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
-        <td>Kiev (Borispol)</td>
-        <td>18:13</td>
-        <td>Registration</td>
-        <td></td>
-        <td>
-          <div class="item-flight-more">
-            <h2>Moscow -> Kiev</h2>
-            <p>Flight: <strong>S7 149</strong></p>
-            <p>Company: <strong>Sibery</strong></p>
-          </div>
-        </td>
-      </tr>
-      <tr class="item-flight item-flight-in" id="item-flight-3">
-        <td>in</td>
-        <td>S7 149</td>
-        <td>Sibery</td>
-        <td>logo</td>
-        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
-        <td>Kiev (Borispol)</td>
-        <td>18:13</td>
-        <td>Registration</td>
-        <td></td>
-        <td>
-          <div class="item-flight-more">
-            <h2>Moscow -> Kiev</h2>
-            <p>Flight: <strong>S7 149</strong></p>
-            <p>Company: <strong>Sibery</strong></p>
-          </div>
-        </td>
-      </tr>
-      <tr class="item-flight item-flight-out" id="item-flight-1">
-        <td>out</td>
-        <td>S7 149</td>
-        <td>Sibery</td>
-        <td>logo</td>
-        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
-        <td>Kiev (Borispol)</td>
-        <td>18:13</td>
-        <td>Registration</td>
-        <td></td>
-        <td>
-          <div class="item-flight-more">
-            <h2>Moscow -> Kiev</h2>
-            <p>Flight: <strong>S7 149</strong></p>
-            <p>Company: <strong>Sibery</strong></p>
-          </div>
-        </td>
-      </tr>
-      <tr class="item-flight item-flight-out" id="item-flight-2">
-        <td>out</td>
-        <td>S7 149</td>
-        <td>Sibery</td>
-        <td>logo</td>
-        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
-        <td>Kiev (Borispol)</td>
-        <td>18:13</td>
-        <td>Registration</td>
-        <td></td>
-        <td>
-          <div class="item-flight-more">
-            <h2>Moscow -> Kiev</h2>
-            <p>Flight: <strong>S7 149</strong></p>
-            <p>Company: <strong>Sibery</strong></p>
-          </div>
-        </td>
-      </tr>
-      <tr class="item-flight item-flight-in" id="item-flight-3">
-        <td>in</td>
-        <td>S7 149</td>
-        <td>Sibery</td>
-        <td>logo</td>
-        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
-        <td>Kiev (Borispol)</td>
-        <td>18:13</td>
-        <td>Registration</td>
-        <td></td>
-        <td>
-          <div class="item-flight-more">
-            <h2>Moscow -> Kiev</h2>
-            <p>Flight: <strong>S7 149</strong></p>
-            <p>Company: <strong>Sibery</strong></p>
-          </div>
-        </td>
-      </tr>
-      <tr class="item-flight item-flight-out" id="item-flight-1">
-        <td>out</td>
-        <td>S7 149</td>
-        <td>Sibery</td>
-        <td>logo</td>
-        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
-        <td>Kiev (Borispol)</td>
-        <td>18:13</td>
-        <td>Registration</td>
-        <td></td>
-        <td>
-          <div class="item-flight-more">
-            <h2>Moscow -> Kiev</h2>
-            <p>Flight: <strong>S7 149</strong></p>
-            <p>Company: <strong>Sibery</strong></p>
-          </div>
-        </td>
-      </tr>
-      <tr class="item-flight item-flight-out" id="item-flight-2">
-        <td>out</td>
-        <td>S7 149</td>
-        <td>Sibery</td>
-        <td>logo</td>
-        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
-        <td>Kiev (Borispol)</td>
-        <td>18:13</td>
-        <td>Registration</td>
-        <td></td>
-        <td>
-          <div class="item-flight-more">
-            <h2>Moscow -> Kiev</h2>
-            <p>Flight: <strong>S7 149</strong></p>
-            <p>Company: <strong>Sibery</strong></p>
-          </div>
-        </td>
-      </tr>
-      <tr class="item-flight item-flight-in" id="item-flight-3">
-        <td>in</td>
-        <td>S7 149</td>
-        <td>Sibery</td>
-        <td>logo</td>
-        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
-        <td>Kiev (Borispol)</td>
-        <td>18:13</td>
-        <td>Registration</td>
-        <td></td>
-        <td>
-          <div class="item-flight-more">
-            <h2>Moscow -> Kiev</h2>
-            <p>Flight: <strong>S7 149</strong></p>
-            <p>Company: <strong>Sibery</strong></p>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="main.js"></script>
 
 </body>
 </html>
