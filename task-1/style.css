@@ -23,7 +23,48 @@ Addition Classes
 .container {
   margin: 0 auto;
   width: 100%;
-  max-width: 1200px;
+  /*max-width: 1200px;*/
+}
+.hidden {
+  display: none;
+}
+.block {
+  display: block;
+}
+
+.modal {
+  /*display: none;*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  cursor: auto;
+}
+.modal .modal-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.modal .modal-wrapper {
+  position: relative;
+  margin: 40px auto;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #fff;
+}
+.modal .modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
 }
 
 /*
@@ -42,6 +83,9 @@ table#timeTable thead th,
 table#timeTable tbody td,
 table#timeTable tbody tr {
   position: relative;
+}
+table#timeTable tbody tr {
+  cursor: pointer;
 }
 table#timeTable th {
   border-bottom: 2px solid #000;
@@ -79,6 +123,15 @@ table#timeTable tbody tr:hover {
 table#timeTable span.airbus-short {
   display: none;
 }
+table#timeTable div.item-flight-more {
+  display: none;
+}
+#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ #timeTable .item-flight-out {
+  display: none;
+}
+#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ #timeTable .item-flight-in {
+  display: none;
+}
 
 /*
 slideup block for more information
@@ -87,25 +140,7 @@ table#timeTable th:nth-child(10),
 table#timeTable td:nth-child(10) {
   padding: 0;
 }
-table#timeTable tbody tr div.wrap {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-table#timeTable tbody tr:target div.wrap {
-  display: block;
-}
-table#timeTable tbody tr div.item-flight-moreinfo {
-  margin: 40px auto;
-  width: 100%;
-  max-width: 400px;
-  padding: 20px;
-  background-color: #fff;
-}
+
 
 /*
 hide logo - 4

@@ -3,11 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Task 1</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="modal">
+  <div class="modal-wrapper">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
 <div class="container">
+  <input type="checkbox" id="checkboxIn"> <label for="checkboxIn">in</label>
+  <input type="checkbox" id="checkboxOut"> <label for="checkboxOut">out</label>
   <table id="timeTable">
     <colgroup></colgroup>
     <colgroup></colgroup>
@@ -33,7 +42,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr id="item-flight-1">
+      <tr class="item-flight item-flight-out" id="item-flight-1">
         <td>out</td>
         <td>S7 149</td>
         <td>Sibery</td>
@@ -43,12 +52,33 @@
         <td>18:13</td>
         <td>Registration</td>
         <td></td>
-        <td><div class="hidden wrap"> 
-          <span class="item-flight-close"></span>
-          <div class="item-flight-moreinfo">More information about flight.</div>
-        </div></td>
+        <td>
+          <div class="item-flight-more">
+            <h2>Moscow -> Kiev</h2>
+            <p>Flight: <strong>S7 149</strong></p>
+            <p>Company: <strong>Sibery</strong></p>
+          </div>
+        </td>
       </tr>
-      <tr id="item-flight-2">
+      <tr class="item-flight item-flight-out" id="item-flight-2">
+        <td>out</td>
+        <td>S7 149</td>
+        <td>Sibery</td>
+        <td>logo</td>
+        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
+        <td>Kiev (Borispol)</td>
+        <td>18:13</td>
+        <td>Registration</td>
+        <td></td>
+        <td>
+          <div class="item-flight-more">
+            <h2>Moscow -> Kiev</h2>
+            <p>Flight: <strong>S7 149</strong></p>
+            <p>Company: <strong>Sibery</strong></p>
+          </div>
+        </td>
+      </tr>
+      <tr class="item-flight item-flight-in" id="item-flight-3">
         <td>in</td>
         <td>S7 149</td>
         <td>Sibery</td>
@@ -58,11 +88,128 @@
         <td>18:13</td>
         <td>Registration</td>
         <td></td>
+        <td>
+          <div class="item-flight-more">
+            <h2>Moscow -> Kiev</h2>
+            <p>Flight: <strong>S7 149</strong></p>
+            <p>Company: <strong>Sibery</strong></p>
+          </div>
+        </td>
+      </tr>
+      <tr class="item-flight item-flight-out" id="item-flight-1">
+        <td>out</td>
+        <td>S7 149</td>
+        <td>Sibery</td>
+        <td>logo</td>
+        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
+        <td>Kiev (Borispol)</td>
+        <td>18:13</td>
+        <td>Registration</td>
         <td></td>
+        <td>
+          <div class="item-flight-more">
+            <h2>Moscow -> Kiev</h2>
+            <p>Flight: <strong>S7 149</strong></p>
+            <p>Company: <strong>Sibery</strong></p>
+          </div>
+        </td>
+      </tr>
+      <tr class="item-flight item-flight-out" id="item-flight-2">
+        <td>out</td>
+        <td>S7 149</td>
+        <td>Sibery</td>
+        <td>logo</td>
+        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
+        <td>Kiev (Borispol)</td>
+        <td>18:13</td>
+        <td>Registration</td>
+        <td></td>
+        <td>
+          <div class="item-flight-more">
+            <h2>Moscow -> Kiev</h2>
+            <p>Flight: <strong>S7 149</strong></p>
+            <p>Company: <strong>Sibery</strong></p>
+          </div>
+        </td>
+      </tr>
+      <tr class="item-flight item-flight-in" id="item-flight-3">
+        <td>in</td>
+        <td>S7 149</td>
+        <td>Sibery</td>
+        <td>logo</td>
+        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
+        <td>Kiev (Borispol)</td>
+        <td>18:13</td>
+        <td>Registration</td>
+        <td></td>
+        <td>
+          <div class="item-flight-more">
+            <h2>Moscow -> Kiev</h2>
+            <p>Flight: <strong>S7 149</strong></p>
+            <p>Company: <strong>Sibery</strong></p>
+          </div>
+        </td>
+      </tr>
+      <tr class="item-flight item-flight-out" id="item-flight-1">
+        <td>out</td>
+        <td>S7 149</td>
+        <td>Sibery</td>
+        <td>logo</td>
+        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
+        <td>Kiev (Borispol)</td>
+        <td>18:13</td>
+        <td>Registration</td>
+        <td></td>
+        <td>
+          <div class="item-flight-more">
+            <h2>Moscow -> Kiev</h2>
+            <p>Flight: <strong>S7 149</strong></p>
+            <p>Company: <strong>Sibery</strong></p>
+          </div>
+        </td>
+      </tr>
+      <tr class="item-flight item-flight-out" id="item-flight-2">
+        <td>out</td>
+        <td>S7 149</td>
+        <td>Sibery</td>
+        <td>logo</td>
+        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
+        <td>Kiev (Borispol)</td>
+        <td>18:13</td>
+        <td>Registration</td>
+        <td></td>
+        <td>
+          <div class="item-flight-more">
+            <h2>Moscow -> Kiev</h2>
+            <p>Flight: <strong>S7 149</strong></p>
+            <p>Company: <strong>Sibery</strong></p>
+          </div>
+        </td>
+      </tr>
+      <tr class="item-flight item-flight-in" id="item-flight-3">
+        <td>in</td>
+        <td>S7 149</td>
+        <td>Sibery</td>
+        <td>logo</td>
+        <td><span class="airbus-long">Airbus A319</span><span class="airbus-short">A319</span></td>
+        <td>Kiev (Borispol)</td>
+        <td>18:13</td>
+        <td>Registration</td>
+        <td></td>
+        <td>
+          <div class="item-flight-more">
+            <h2>Moscow -> Kiev</h2>
+            <p>Flight: <strong>S7 149</strong></p>
+            <p>Company: <strong>Sibery</strong></p>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="main.js"></script>
 
 </body>
 </html>
