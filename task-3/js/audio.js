@@ -38,6 +38,8 @@ var Pleer = (function () {
       'rock': [5.4, 4.5, 3.6, -3.9, -6.3, -6.9, -3.6, -2.7, -0.3, 2.1, 4.5, 6, 6.9, 7.5, 7.8, 7.8, 7.8, 8.1],
       'jazz': [3, 6, 5.1, 3.6, 1.8, -3.9, -5.1, -5.1, -2.1, 1.2, 4.5, 9, 3, -1.8, -4.5, -2.4, -0.6, 2.4],
       'pop': [-1.8, 0.6, 3.9, 5.4, 5.4, 4.5, 2.1, 0.9, -0.6, -1.5, -1.5, -1.8, -2.1, -2.1, -2.7, -2.1, -2.1, -0.3],
+      'reggae': [0, 0, 0, 0, 0, -0.3, -1.2, -2.7, -2.7, 0, 0.9, 2.1, 3.9, 4.2, 4.2, 2.7, 0.6, 0],
+      'vocal': [-4.8, -4.5, -3.9, -2.1, -0.3, 1.2, 1.8, 3.6, 6.6, 9, 6.9, 4.5, 2.4, 0.3, -0.9, -2.1, -2.7, -3],
     }
 
     var _init = function () {
@@ -55,8 +57,8 @@ var Pleer = (function () {
         dataArray = new Uint8Array(bufferLength);
 
         canvasDiv = document.getElementById('analyser');
-        canvasWidth = 700;
-        canvasHeight = 300;
+        canvasWidth = canvasDiv.offsetWidth;
+        canvasHeight = canvasDiv.offsetHeight;
         canvas = canvasDiv.getContext('2d');
         canvas.clearRect(0, 0, canvasWidth, canvasHeight);
         drawVisual = null;
@@ -65,7 +67,7 @@ var Pleer = (function () {
             context.createGain = context.createGainNode;
         }
         gainNode = context.createGain();
-        gainNode.gain.value = 0.25;
+        gainNode.gain.value = 0.16;
 
         filters = _createFilters();
 
@@ -195,14 +197,14 @@ var Pleer = (function () {
             source.start(0, startOffset % audioBuffer.duration);
             currSource = source;
             stopBtn.disabled = false;
-            dropZone.classList.add('hidden');
+            dropZone.classList.add('invisible');
             _playToPause();
             _drawCircles();
             // _drawBars();
         } else {
             currSource.stop();
             startOffset += context.currentTime - startTime;
-            dropZone.classList.remove('hidden');
+            dropZone.classList.remove('invisible');
             _playToPause(true);
             cancelAnimationFrame(drawVisual);
         }
@@ -214,7 +216,7 @@ var Pleer = (function () {
         startOffset = 0;
         _playToPause(true);
         pauseFlag = false;
-        dropZone.classList.remove('hidden');
+        dropZone.classList.remove('invisible');
         cancelAnimationFrame(drawVisual);
     };
 
@@ -231,7 +233,8 @@ var Pleer = (function () {
 
     var _endAudio = function () {
         _playToPause(true);
-        dropZone.classList.remove('hidden');
+        pauseFlag = false;
+        dropZone.classList.remove('invisible');
     }
 
     var _changeLevel = function (event) {
@@ -271,15 +274,24 @@ var Pleer = (function () {
 
         canvas.fillStyle = 'rgb(255, 255, 255)';
         canvas.fillRect(0, 0, canvasWidth, canvasHeight);
-        var circleX = Math.ceil(canvasWidth / bufferLength);
-        var circleRadius;
+        var circleStep = Math.ceil(canvasWidth / bufferLength);
         for (var i = 0; i < bufferLength; i++) {
-            circleRadius = dataArray[i] % (canvasHeight / 2);
+            var lineWidth = (circleStep * i) % 6;
+            var circleRadius = Math.abs(dataArray[i] % (canvasHeight / 2) - lineWidth);
+            var circleX = circleStep * i;
+
+            if (circleX + circleRadius > (canvasWidth) || 
+                circleX - circleRadius < 0) {
+                continue;
+            }
+
+            var randomVar = Math.floor(Math.random() * 255);
 
             canvas.beginPath();
-            canvas.arc(circleX * i, (canvasHeight / 2 - circleRadius / 5), circleRadius / 2, 0, 2 * Math.PI, false);
-            canvas.lineWidth = circleX * i % 5;
-            canvas.strokeStyle = 'rgba(255, ' + (dataArray[i]) % 255 + ', ' + circleRadius % 255 + ', 0.5)';
+            canvas.arc(circleX, canvasHeight / 2, circleRadius, 0, 2 * Math.PI, false);
+            canvas.lineWidth = lineWidth;
+            canvas.strokeStyle = 'rgba(255, ' + dataArray[i] % 255 + ', ' + 
+                (circleRadius + randomVar) % 255 + ', 0.6)';
             canvas.stroke();
             canvas.closePath();
         }

@@ -17,22 +17,22 @@
     <button id="stop" disabled=""><i class="fa fa-stop"></i></button>
     <div class="volume">
       <span>0</span>
-      <input type="range" min="0" max="100" id="volume">
+      <input type="range" min="0" max="100" id="volume" value="30">
       <span>100</span>
     </div>
   </div>
   <div class="buttons" id="equalaizer">
-    <span>Presets:</span>
+    <span>Жанры:</span>
   </div>
 
-  <h2>Title: <span id="audioTitle">choose song, please</span></h2>
+  <h2 id="audioTitle"></h2>
 
   <div id="dragndrop">
-    <span>Drop <i class="fa fa-music"></i> here</span>
+    <span>Перетащи <i class="fa fa-music"></i> сюда</span>
     <input type="file" name="file" id="file" class="hidden" accept="audio/*">
   </div>
 
-  <canvas id="analyser"></canvas>
+  <canvas id="analyser" width="700" height="200"></canvas>
 
 </div>
 
