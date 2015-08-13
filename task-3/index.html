@@ -14,23 +14,22 @@
 <div class="container">
   <div class="buttons">
     <button id="play" disabled=""><i class="fa fa-play"></i></button>
-    <button id="pause" disabled=""><i class="fa fa-pause"></i></button>
     <button id="stop" disabled=""><i class="fa fa-stop"></i></button>
+    <div class="volume">
+      <span>0</span>
+      <input type="range" min="0" max="100" id="volume">
+      <span>100</span>
+    </div>
   </div>
-  <div class="buttons">
-    <span>0</span>
-    <input type="range" min="0" max="100" id="volume">
-    <span>100</span>
-  </div>
-  <div class="buttons">
-    <select name="equalaizer" id="equalaizer"></select>
+  <div class="buttons" id="equalaizer">
+    <span>Presets:</span>
   </div>
   <h2>
     Title: <span id="audioTitle">choose song, please</span>
   </h2>
   <div id="dragndrop">
     <span>Drop <i class="fa fa-music"></i> here</span>
-    <input type="file" name="file" id="file" class="hidden">
+    <input type="file" name="file" id="file" class="hidden" accept="audio/*">
   </div>
   
   

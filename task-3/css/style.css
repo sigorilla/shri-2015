@@ -33,6 +33,13 @@ body {
   text-align: center;
   cursor: pointer;
 }
+#dragndrop.drag-in {
+  border-style: solid;
+  color: #000;
+}
+#dragndrop span {
+  z-index: -1;
+}
 
 #loading {
   position: fixed;
@@ -58,11 +65,11 @@ body {
 }
 
 #volume {
-  width: 50%;
+  /*width: 50%;*/
   -webkit-appearance: none;
   background-color: #ddd;
-  height: 20px; 
-  border-radius: 15px; 
+  height: 1rem; 
+  border-radius: 1rem; 
   padding: 0 3px;
 }
 #volume::-webkit-slider-thumb {
@@ -79,7 +86,12 @@ body {
   text-align: center;
   margin-top: 10px;
 }
-button {
+.buttons .volume {
+  display: inline-block;
+  padding: 10px;
+  margin-bottom: 1rem;
+}
+.buttons button {
   font-size: 2rem;
   display: inline-block;
   padding: 10px;
@@ -89,6 +101,21 @@ button {
   width: 100px;
   cursor: pointer;
 }
-button:disabled {
+.buttons button:disabled {
   cursor: not-allowed;
+}
+
+#equalaizer input {
+  display: none;
+}
+#equalaizer input:checked + label {
+  font-weight: bolder;
+}
+#equalaizer label {
+  padding: 5px;
+  border: 1px solid #c8c8c8;
+  border-radius: 3px;
+}
+#equalaizer label:not(:last-of-type) {
+  margin-right: 5px;
 }

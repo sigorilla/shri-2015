@@ -18,7 +18,6 @@ var Pleer = (function () {
     var drawVisual;
 
     var playBtn;
-    var pauseBtn;
     var stopBtn;
     var volumeRange;
     var presetSelect;
@@ -27,7 +26,9 @@ var Pleer = (function () {
     var dropZone;
 
     var loading;
+
     var loadingFlag;
+    var pauseFlag = false;
 
     var filters;
     var frequencies = [31, 63, 87, 125, 175, 250, 350, 500, 700, 1000, 1400, 2000, 2800, 4000, 5600, 8000, 11200, 16000];
@@ -71,7 +72,6 @@ var Pleer = (function () {
         audioBuffer = null;
         loadingFlag = true;
         playBtn = document.getElementById('play');
-        pauseBtn = document.getElementById('pause');
         stopBtn = document.getElementById('stop');
         volumeRange = document.getElementById('volume');
         presetSelect = document.getElementById('equalaizer');
@@ -80,24 +80,34 @@ var Pleer = (function () {
         loading = document.getElementById('loading');
 
         Object.keys(presets).forEach(function (item, i) {
-            var option = document.createElement('option');
-            option.innerHTML = item.charAt(0).toUpperCase() + item.slice(1);
-            option.setAttribute('value', item);
-            presetSelect.appendChild(option);
-        })
-        
+            var choise = document.createElement('input');
+            var label_choise = document.createElement('label');
+            choise.setAttribute('type', 'radio');
+            choise.setAttribute('id', item);
+            choise.setAttribute('value', item);
+            choise.setAttribute('name', 'eq_choise');
+            if (i == 0) {
+                choise.checked = true;
+            }
+            choise.onchange = _changePreset;
+            label_choise.innerHTML = item.charAt(0).toUpperCase() + item.slice(1);
+            label_choise.setAttribute('for', item);
+            presetSelect.appendChild(choise);
+            presetSelect.appendChild(label_choise);
+        });
 
         _addListener();
     };
 
     var _addListener = function () {
         playBtn.addEventListener('click', _playAudio);
-        pauseBtn.addEventListener('click', _pauseAudio);
         stopBtn.addEventListener('click', _stopAudio);
         dropZone.addEventListener('click', _openFileInput);
         fileInput.addEventListener('change', _handleFileInputSelect, false);
         volumeRange.addEventListener('change', _changeLevel);
         presetSelect.addEventListener('change', _changePreset);
+        dropZone.addEventListener('dragenter', _handleDragEnter, false);
+        dropZone.addEventListener('dragleave', _handleDragLeave, false);
         dropZone.addEventListener('dragover', _handleDragOver, false);
         dropZone.addEventListener('drop', _handleFileSelect, false);
     };
@@ -146,6 +156,14 @@ var Pleer = (function () {
         reader.readAsArrayBuffer(file);
     };
 
+    var _handleDragEnter = function (event) {
+        dropZone.classList.add('drag-in');
+    };
+
+    var _handleDragLeave = function (event) {
+        dropZone.classList.remove('drag-in');
+    };
+
     var _handleDragOver = function (event) {
         event.stopPropagation();
         event.preventDefault();
@@ -153,44 +171,56 @@ var Pleer = (function () {
     };
 
     var _playAudio = function () {
-        startTime = context.currentTime;
-        var source = context.createBufferSource();
+        if (!pauseFlag) {
+            startTime = context.currentTime;
+            var source = context.createBufferSource();
 
-        source.onended = _endAudio;
-        source.buffer = audioBuffer;
-        source.connect(gainNode);
-        source.connect(analyser);
-        source.connect(filters[0]);
-        filters[filters.length - 1].connect(gainNode);
-        gainNode.connect(context.destination);
-        source.start(0, startOffset % audioBuffer.duration);
-        currSource = source;
-        playBtn.disabled = true;
-        pauseBtn.disabled = false;
-        stopBtn.disabled = false;
-        dropZone.classList.add('hidden');
-        _drawBars();
-    };
-
-    var _pauseAudio = function () {
-        currSource.stop();
-        startOffset += context.currentTime - startTime;
-        playBtn.disabled = false;
-        dropZone.classList.remove('hidden');
-        cancelAnimationFrame(drawVisual);
+            source.onended = _endAudio;
+            source.buffer = audioBuffer;
+            source.connect(gainNode);
+            source.connect(analyser);
+            source.connect(filters[0]);
+            filters[filters.length - 1].connect(gainNode);
+            gainNode.connect(context.destination);
+            source.start(0, startOffset % audioBuffer.duration);
+            currSource = source;
+            stopBtn.disabled = false;
+            dropZone.classList.add('hidden');
+            _playToPause();
+            _drawBars();
+        } else {
+            currSource.stop();
+            startOffset += context.currentTime - startTime;
+            dropZone.classList.remove('hidden');
+            _playToPause(true);
+            cancelAnimationFrame(drawVisual);
+        }
+        pauseFlag = !pauseFlag;
     };
 
     var _stopAudio = function () {
         currSource.stop(0);
         startOffset = 0;
-        playBtn.disabled = false;
-        pauseBtn.disabled = true;
+        _playToPause(true);
+        // playBtn.disabled = false;
+        // pauseBtn.disabled = true;
         dropZone.classList.remove('hidden');
         cancelAnimationFrame(drawVisual);
     };
 
+    var _playToPause = function (reversed) {
+        reversed = reversed || false;
+        if (reversed) {
+            playBtn.querySelector('.fa').classList.add('fa-play');
+            playBtn.querySelector('.fa').classList.remove('fa-pause');
+        } else {
+            playBtn.querySelector('.fa').classList.remove('fa-play');
+            playBtn.querySelector('.fa').classList.add('fa-pause');
+        }
+    };
+
     var _endAudio = function () {
-        playBtn.disabled = false;
+        _playToPause(true);
         dropZone.classList.remove('hidden');
     }
 
