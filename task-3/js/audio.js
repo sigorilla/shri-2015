@@ -202,8 +202,7 @@ var Pleer = (function () {
         currSource.stop(0);
         startOffset = 0;
         _playToPause(true);
-        // playBtn.disabled = false;
-        // pauseBtn.disabled = true;
+        pauseFlag = false;
         dropZone.classList.remove('hidden');
         cancelAnimationFrame(drawVisual);
     };
