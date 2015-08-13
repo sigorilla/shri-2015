@@ -33,7 +33,7 @@ Addition Classes
   width: 100%;
   /*max-width: 1200px;*/
   overflow: hidden;
-  font-size: 0;
+  /*font-size: 0;*/
 }
 .hidden {
   display: none !important;
@@ -46,6 +46,9 @@ Addition Classes
   padding: 10px 40px;
 }
 
+/*
+Modal window
+ */
 .modal {
   display: none;
   position: fixed;
@@ -84,7 +87,7 @@ Addition Classes
 }
 
 /*
-Not table
+Time Table
  */
 .list-flight {
   position: relative;
@@ -127,7 +130,7 @@ Not table
 .item-cell span {
   display: inline-block;
   padding: 5px 10px;
-  white-space: pre;
+  white-space: pre-wrap;
 }
 .item-cell.item-flight-company-logo img {
   max-height: 25px;
@@ -185,10 +188,15 @@ input[type=checkbox] + label:last-of-type {
 input[type=checkbox]:checked + label {
   color: #f60;
 }
-#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ .list-flight .item-flight-out {
+/*
+To show checked type of flight
+ */
+#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ 
+.list-flight .item-flight-out {
   display: none;
 }
-#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ .list-flight .item-flight-in {
+#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ 
+.list-flight .item-flight-in {
   display: none;
 }
 
@@ -196,34 +204,69 @@ input[type=checkbox]:checked + label {
 .list-flight .item-flight:nth-child(odd) > a:after {
   background-color: #ccddff;
 }
+/*
+This rules need to save stripes on table
+For this I use different tags:
+flight-in - tag ARTICLE
+flight-out - tag DIV
+ */
 /* .-in <=> article */
-#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ .list-flight .item-flight-in:nth-of-type(odd) .item-cell:not(:hover):after,
-#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ .list-flight .item-flight-in:nth-of-type(odd) > a:after {
+#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ 
+.list-flight .item-flight-in:nth-of-type(odd) .item-cell:not(:hover):after,
+
+#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ 
+.list-flight .item-flight-in:nth-of-type(odd) > a:after {
   background-color: #ccddff;
 }
-#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ .list-flight .item-flight-in:nth-of-type(even) .item-cell:not(:hover):after,
-#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ .list-flight .item-flight-in:nth-of-type(even) > a:after {
+#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ 
+.list-flight .item-flight-in:nth-of-type(even) .item-cell:not(:hover):after,
+
+#checkboxIn:checked ~ #checkboxOut:not(:checked) ~ 
+.list-flight .item-flight-in:nth-of-type(even) > a:after {
   background-color: inherit;
 }
 /* .-out <=> div */
-#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ .list-flight .item-flight.item-flight-out:nth-of-type(odd) .item-cell:not(:hover):after,
-#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ .list-flight .item-flight.item-flight-out:nth-of-type(odd) > a:after {
+#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ 
+.list-flight .item-flight.item-flight-out:nth-of-type(odd) 
+.item-cell:not(:hover):after,
+
+#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ 
+.list-flight .item-flight.item-flight-out:nth-of-type(odd) > a:after {
   background-color: #ccddff;
 }
-#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ .list-flight .item-flight.item-flight-out:nth-of-type(even) .item-cell:not(:hover):after,
-#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ .list-flight .item-flight.item-flight-out:nth-of-type(even) > a:after {
+#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ 
+.list-flight .item-flight.item-flight-out:nth-of-type(even) 
+.item-cell:not(:hover):after,
+
+#checkboxIn:not(:checked) ~ #checkboxOut:checked ~ 
+.list-flight .item-flight.item-flight-out:nth-of-type(even) > a:after {
   background-color: inherit;
 }
 
-.item-header.item-flight-type:hover ~ .list-flight .item-cell.item-flight-type:after,
-.item-header.item-flight-number:hover ~ .list-flight .item-cell.item-flight-number:after,
-.item-header.item-flight-company:hover ~ .list-flight .item-cell.item-flight-company:after,
-.item-header.item-flight-company-logo:hover ~ .list-flight .item-cell.item-flight-company-logo:after,
-.item-header.item-flight-plane:hover ~ .list-flight .item-cell.item-flight-plane:after,
-.item-header.item-flight-destination:hover ~ .list-flight .item-cell.item-flight-destination:after,
-.item-header.item-flight-time:hover ~ .list-flight .item-cell.item-flight-time:after,
-.item-header.item-flight-status:hover ~ .list-flight .item-cell.item-flight-status:after,
-.item-header.item-flight-info:hover ~ .list-flight .item-cell.item-flight-info:after,
+/*
+Highlight current column if hover header
+ */
+.item-header.item-flight-type:hover ~ 
+.list-flight .item-cell.item-flight-type:after,
+.item-header.item-flight-number:hover ~ 
+.list-flight .item-cell.item-flight-number:after,
+.item-header.item-flight-company:hover ~ 
+.list-flight .item-cell.item-flight-company:after,
+.item-header.item-flight-company-logo:hover ~ 
+.list-flight .item-cell.item-flight-company-logo:after,
+.item-header.item-flight-plane:hover ~ 
+.list-flight .item-cell.item-flight-plane:after,
+.item-header.item-flight-destination:hover ~ 
+.list-flight .item-cell.item-flight-destination:after,
+.item-header.item-flight-time:hover ~ 
+.list-flight .item-cell.item-flight-time:after,
+.item-header.item-flight-status:hover ~ 
+.list-flight .item-cell.item-flight-status:after,
+.item-header.item-flight-info:hover ~ 
+.list-flight .item-cell.item-flight-info:after,
+/*
+Highlight current column
+ */
 .list-flight .item-cell:hover:after {
   content: "";
   position: absolute;
