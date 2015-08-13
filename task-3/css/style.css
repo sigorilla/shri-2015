@@ -57,7 +57,7 @@ body {
   margin-top: 20px;
 }
 
-#level {
+#volume {
   width: 50%;
   -webkit-appearance: none;
   background-color: #ddd;
@@ -65,7 +65,7 @@ body {
   border-radius: 15px; 
   padding: 0 3px;
 }
-#level::-webkit-slider-thumb {
+#volume::-webkit-slider-thumb {
   vertical-align: middle;
   -webkit-appearance: none;
   background-color: #444;

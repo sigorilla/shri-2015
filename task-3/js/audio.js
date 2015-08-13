@@ -20,7 +20,8 @@ var Pleer = (function () {
     var playBtn;
     var pauseBtn;
     var stopBtn;
-    var level;
+    var volumeRange;
+    var presetSelect;
 
     var fileInput;
     var dropZone;
@@ -28,45 +29,65 @@ var Pleer = (function () {
     var loading;
     var loadingFlag;
 
+    var filters;
+    var frequencies = [31, 63, 87, 125, 175, 250, 350, 500, 700, 1000, 1400, 2000, 2800, 4000, 5600, 8000, 11200, 16000];
+    var presets = {
+      'normal': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      'classic': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, -6, -6, -6, -8.4],
+      'rock': [5.4, 4.5, 3.6, -3.9, -6.3, -6.9, -3.6, -2.7, -0.3, 2.1, 4.5, 6, 6.9, 7.5, 7.8, 7.8, 7.8, 8.1],
+      'jazz': [3, 6, 5.1, 3.6, 1.8, -3.9, -5.1, -5.1, -2.1, 1.2, 4.5, 9, 3, -1.8, -4.5, -2.4, -0.6, 2.4],
+      'pop': [-1.8, 0.6, 3.9, 5.4, 5.4, 4.5, 2.1, 0.9, -0.6, -1.5, -1.5, -1.8, -2.1, -2.1, -2.7, -2.1, -2.1, -0.3],
+    }
+
     var _init = function () {
         try {
             window.AudioContext = window.AudioContext || 
                 window.webkitAudioContext;
             context = new AudioContext();
-            analyser = context.createAnalyser();
-            analyser.fftSize = 4096;
-            bufferLength = analyser.frequencyBinCount;
-            dataArray = new Uint8Array(bufferLength);
-
-            canvasDiv = document.getElementById('analyser');
-            canvasWidth = document.querySelector('body').offsetWidth;
-            canvasHeight = 200;
-            canvas = canvasDiv.getContext('2d');
-            canvas.clearRect(0, 0, canvasWidth, canvasHeight);
-            drawVisual = null;
-
-            if (!context.createGain) {
-                context.createGain = context.createGainNode;
-            }
-            gainNode = context.createGain();
-            gainNode.gain.value = 0.25;
-
-            audioBuffer = null;
-            loadingFlag = true;
-            playBtn = document.getElementById('play');
-            pauseBtn = document.getElementById('pause');
-            stopBtn = document.getElementById('stop');
-            level = document.getElementById('level');
-            fileInput = document.getElementById('file');
-            dropZone = document.getElementById('dragndrop');
-            loading = document.getElementById('loading');
-
-            _addListener();
-
         } catch (e) {
             console.log(e);
             alert('Web Audio API is not supported in this browser');
         }
+        analyser = context.createAnalyser();
+        analyser.fftSize = 4096;
+        bufferLength = analyser.frequencyBinCount;
+        dataArray = new Uint8Array(bufferLength);
+
+        canvasDiv = document.getElementById('analyser');
+        canvasWidth = document.querySelector('body').offsetWidth;
+        canvasHeight = 200;
+        canvas = canvasDiv.getContext('2d');
+        canvas.clearRect(0, 0, canvasWidth, canvasHeight);
+        drawVisual = null;
+
+        if (!context.createGain) {
+            context.createGain = context.createGainNode;
+        }
+        gainNode = context.createGain();
+        gainNode.gain.value = 0.25;
+
+        filters = _createFilters();
+
+        audioBuffer = null;
+        loadingFlag = true;
+        playBtn = document.getElementById('play');
+        pauseBtn = document.getElementById('pause');
+        stopBtn = document.getElementById('stop');
+        volumeRange = document.getElementById('volume');
+        presetSelect = document.getElementById('equalaizer');
+        fileInput = document.getElementById('file');
+        dropZone = document.getElementById('dragndrop');
+        loading = document.getElementById('loading');
+
+        Object.keys(presets).forEach(function (item, i) {
+            var option = document.createElement('option');
+            option.innerHTML = item.charAt(0).toUpperCase() + item.slice(1);
+            option.setAttribute('value', item);
+            presetSelect.appendChild(option);
+        })
+        
+
+        _addListener();
     };
 
     var _addListener = function () {
@@ -75,7 +96,8 @@ var Pleer = (function () {
         stopBtn.addEventListener('click', _stopAudio);
         dropZone.addEventListener('click', _openFileInput);
         fileInput.addEventListener('change', _handleFileInputSelect, false);
-        level.addEventListener('change', _changeLevel);
+        volumeRange.addEventListener('change', _changeLevel);
+        presetSelect.addEventListener('change', _changePreset);
         dropZone.addEventListener('dragover', _handleDragOver, false);
         dropZone.addEventListener('drop', _handleFileSelect, false);
     };
@@ -133,10 +155,13 @@ var Pleer = (function () {
     var _playAudio = function () {
         startTime = context.currentTime;
         var source = context.createBufferSource();
+
         source.onended = _endAudio;
         source.buffer = audioBuffer;
         source.connect(gainNode);
         source.connect(analyser);
+        source.connect(filters[0]);
+        filters[filters.length - 1].connect(gainNode);
         gainNode.connect(context.destination);
         source.start(0, startOffset % audioBuffer.duration);
         currSource = source;
@@ -197,6 +222,34 @@ var Pleer = (function () {
 
             x += barWidth + 1;
         }
+    };
+
+    var _changePreset = function (event) {
+      presets[event.target.value].forEach(function (item, i) {
+        filters[i].gain.value = item;
+      }, false);
+    };
+
+    var _createFilter = function (frequency) {
+        var filter = context.createBiquadFilter();
+
+        filter.type = 'peaking';
+        filter.frequency.value = frequency;
+        filter.Q.value = 1;
+        filter.gain.value = 0;
+
+        return filter;
+    };
+
+    var _createFilters = function () {
+        var filters = frequencies.map(_createFilter);
+
+        filters.reduce(function (prev, curr) {
+            prev.connect(curr);
+            return curr;
+        });
+
+        return filters;
     };
 
     return {
