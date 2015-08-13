@@ -105,7 +105,6 @@ var Pleer = (function () {
         dropZone.addEventListener('click', _openFileInput);
         fileInput.addEventListener('change', _handleFileInputSelect, false);
         volumeRange.addEventListener('change', _changeLevel);
-        presetSelect.addEventListener('change', _changePreset);
         dropZone.addEventListener('dragenter', _handleDragEnter, false);
         dropZone.addEventListener('dragleave', _handleDragLeave, false);
         dropZone.addEventListener('dragover', _handleDragOver, false);
@@ -121,9 +120,14 @@ var Pleer = (function () {
     var _handleFileInputSelect = function (event) {
         if (loadingFlag) {
             var file = event.target.files[0];
-            _readFile(file);
+            if (/audio\/(.*)/g.test(file.type)) {
+                _readFile(file);
+                loadingFlag = false;
+            } else {
+                loadingFlag = true;
+                console.log('It\'s not audio file.');
+            }
         }
-        loadingFlag = false;
     };
 
     var _handleFileSelect = function (event) {
@@ -131,9 +135,14 @@ var Pleer = (function () {
         event.preventDefault();
         if (loadingFlag) {
             var file = event.dataTransfer.files[0];
-            _readFile(file);
+            if (/audio\/(.*)/g.test(file.type)) {
+                _readFile(file);
+                loadingFlag = false;
+            } else {
+                loadingFlag = true;
+                console.log('It\'s not audio file.');
+            }
         }
-        loadingFlag = false;
     };
 
     var _readFile = function (file) {
@@ -145,7 +154,8 @@ var Pleer = (function () {
                 audioBuffer = buffer;
                 playBtn.disabled = false;
                 loadingFlag = true;
-                document.getElementById('audioTitle').innerHTML = file.name;
+                var filename = file.name.substr(0, file.name.lastIndexOf('.'));
+                document.getElementById('audioTitle').innerHTML = filename;
                 loading.classList.add('hidden');
                 _playAudio();
             }, function (error) {
