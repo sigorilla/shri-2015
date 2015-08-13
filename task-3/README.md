@@ -12,3 +12,5 @@
 
 - [x] выбора настройки эквалайзера (pop, rock, jazz, classic, normal);
 - [ ] вывод названия песни и исполнителя из метаданных аудиофайла.
+
+[Ссылка на рабочий пример](https://rawgit.com/sigorilla/shri-2015/master/task-3/index.html)
