@@ -50,13 +50,13 @@ var Pleer = (function () {
             alert('Web Audio API is not supported in this browser');
         }
         analyser = context.createAnalyser();
-        analyser.fftSize = 4096;
+        analyser.fftSize = 512;
         bufferLength = analyser.frequencyBinCount;
         dataArray = new Uint8Array(bufferLength);
 
         canvasDiv = document.getElementById('analyser');
-        canvasWidth = document.querySelector('body').offsetWidth;
-        canvasHeight = 200;
+        canvasWidth = 700;
+        canvasHeight = 300;
         canvas = canvasDiv.getContext('2d');
         canvas.clearRect(0, 0, canvasWidth, canvasHeight);
         drawVisual = null;
@@ -197,7 +197,8 @@ var Pleer = (function () {
             stopBtn.disabled = false;
             dropZone.classList.add('hidden');
             _playToPause();
-            _drawBars();
+            _drawCircles();
+            // _drawBars();
         } else {
             currSource.stop();
             startOffset += context.currentTime - startTime;
@@ -260,6 +261,27 @@ var Pleer = (function () {
             );
 
             x += barWidth + 1;
+        }
+    };
+
+    var _drawCircles = function () {
+        drawVisual = requestAnimationFrame(_drawCircles);
+
+        analyser.getByteFrequencyData(dataArray);
+
+        canvas.fillStyle = 'rgb(255, 255, 255)';
+        canvas.fillRect(0, 0, canvasWidth, canvasHeight);
+        var circleX = Math.ceil(canvasWidth / bufferLength);
+        var circleRadius;
+        for (var i = 0; i < bufferLength; i++) {
+            circleRadius = dataArray[i] % (canvasHeight / 2);
+
+            canvas.beginPath();
+            canvas.arc(circleX * i, (canvasHeight / 2 - circleRadius / 5), circleRadius / 2, 0, 2 * Math.PI, false);
+            canvas.lineWidth = circleX * i % 5;
+            canvas.strokeStyle = 'rgba(255, ' + (dataArray[i]) % 255 + ', ' + circleRadius % 255 + ', 0.5)';
+            canvas.stroke();
+            canvas.closePath();
         }
     };
 
