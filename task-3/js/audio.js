@@ -33,13 +33,34 @@ var Pleer = (function () {
     var filters;
     var frequencies = [31, 63, 87, 125, 175, 250, 350, 500, 700, 1000, 1400, 2000, 2800, 4000, 5600, 8000, 11200, 16000];
     var presets = {
-      'normal': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      'classic': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, -6, -6, -6, -8.4],
-      'rock': [5.4, 4.5, 3.6, -3.9, -6.3, -6.9, -3.6, -2.7, -0.3, 2.1, 4.5, 6, 6.9, 7.5, 7.8, 7.8, 7.8, 8.1],
-      'jazz': [3, 6, 5.1, 3.6, 1.8, -3.9, -5.1, -5.1, -2.1, 1.2, 4.5, 9, 3, -1.8, -4.5, -2.4, -0.6, 2.4],
-      'pop': [-1.8, 0.6, 3.9, 5.4, 5.4, 4.5, 2.1, 0.9, -0.6, -1.5, -1.5, -1.8, -2.1, -2.1, -2.7, -2.1, -2.1, -0.3],
-      'reggae': [0, 0, 0, 0, 0, -0.3, -1.2, -2.7, -2.7, 0, 0.9, 2.1, 3.9, 4.2, 4.2, 2.7, 0.6, 0],
-      'vocal': [-4.8, -4.5, -3.9, -2.1, -0.3, 1.2, 1.8, 3.6, 6.6, 9, 6.9, 4.5, 2.4, 0.3, -0.9, -2.1, -2.7, -3],
+        'normal': {
+            'preset': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            'name': 'Обычный',
+        },
+        'classic': {
+            'preset': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, -6, -6, -6, -8.4],
+            'name': 'Классика',
+        },
+        'rock': {
+            'preset': [5.4, 4.5, 3.6, -3.9, -6.3, -6.9, -3.6, -2.7, -0.3, 2.1, 4.5, 6, 6.9, 7.5, 7.8, 7.8, 7.8, 8.1],
+            'name': 'Рок',
+        },
+        'jazz': {
+            'preset': [3, 6, 5.1, 3.6, 1.8, -3.9, -5.1, -5.1, -2.1, 1.2, 4.5, 9, 3, -1.8, -4.5, -2.4, -0.6, 2.4],
+            'name': 'Джаз',
+        },
+        'pop': {
+            'preset': [-1.8, 0.6, 3.9, 5.4, 5.4, 4.5, 2.1, 0.9, -0.6, -1.5, -1.5, -1.8, -2.1, -2.1, -2.7, -2.1, -2.1, -0.3],
+            'name': 'Поп',
+        },
+        'reggae': {
+            'preset': [0, 0, 0, 0, 0, -0.3, -1.2, -2.7, -2.7, 0, 0.9, 2.1, 3.9, 4.2, 4.2, 2.7, 0.6, 0],
+            'name': 'Регги',
+        },
+        'vocal': {
+            'preset': [-4.8, -4.5, -3.9, -2.1, -0.3, 1.2, 1.8, 3.6, 6.6, 9, 6.9, 4.5, 2.4, 0.3, -0.9, -2.1, -2.7, -3],
+            'name': 'Вокал',
+        }
     }
 
     var _init = function () {
@@ -92,7 +113,7 @@ var Pleer = (function () {
                 choise.checked = true;
             }
             choise.onchange = _changePreset;
-            label_choise.innerHTML = item.charAt(0).toUpperCase() + item.slice(1);
+            label_choise.innerHTML = presets[item]['name'];
             label_choise.setAttribute('for', item);
             presetSelect.appendChild(choise);
             presetSelect.appendChild(label_choise);
@@ -298,7 +319,7 @@ var Pleer = (function () {
     };
 
     var _changePreset = function (event) {
-      presets[event.target.value].forEach(function (item, i) {
+      presets[event.target.value]['preset'].forEach(function (item, i) {
         filters[i].gain.value = item;
       }, false);
     };
