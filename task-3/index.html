@@ -12,14 +12,6 @@
 <div id="loading" class="hidden"><span id="loading"><i class="fa fa-spinner fa-spin"></i></span></div>
 
 <div class="container">
-  <h2>
-    Title: <span id="audioTitle">choose song, please</span>
-  </h2>
-  <div id="dragndrop">
-    <span>Drop file here</span>
-    <input type="file" name="file" id="file" class="hidden">
-  </div>
-  
   <div class="buttons">
     <button id="play" disabled=""><i class="fa fa-play"></i></button>
     <button id="pause" disabled=""><i class="fa fa-pause"></i></button>
@@ -30,6 +22,14 @@
     <input type="range" min="0" max="100" id="level">
     <span>100</span>
   </div>
+  <h2>
+    Title: <span id="audioTitle">choose song, please</span>
+  </h2>
+  <div id="dragndrop">
+    <span>Drop <i class="fa fa-music"></i> here</span>
+    <input type="file" name="file" id="file" class="hidden">
+  </div>
+  
   
   <canvas id="analyser"></canvas>
 

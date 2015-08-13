@@ -8,15 +8,17 @@ html {
   font-size: 16px;
   font-family: "PT Serif", Georgia, "Times New Roman", serif;
   line-height: 1.5;
-  color: #fff;
+  /*color: #fff;*/
 }
 body {
-  background-color: #000;
+  margin: 0;
+  /*background-color: #000;*/
 }
 
 .container {
-  width: 700px;
   margin: 40px auto;
+  width: 100%;
+  max-width: 700px;
 }
 .hidden {
   display: none !important;
@@ -29,7 +31,7 @@ body {
   border: 1px dashed #c8c8c8;
   border-radius: 5px;
   text-align: center;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 #loading {
@@ -47,6 +49,9 @@ body {
 }
 
 #analyser {
+  position: fixed;
+  left: 0;
+  bottom: 0;
   width: 100%;
   height: 200px;
   margin-top: 20px;
@@ -67,6 +72,7 @@ body {
   width: 16px;
   height: 16px;
   border-radius: 16px;
+  cursor: pointer;
 }
 
 .buttons {
@@ -78,7 +84,7 @@ button {
   display: inline-block;
   padding: 10px;
   background-color: #fff;
-  border: 1px solid #c8c8c8;
+  border: none;
   border-radius: 5px;
   width: 100px;
   cursor: pointer;
